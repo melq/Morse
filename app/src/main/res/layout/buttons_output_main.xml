@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="4dp">
+
+    <ImageButton
+        style="@style/buttons_output_main"
+        android:src="@drawable/play"
+        android:contentDescription="@string/play_button" />
+
+    <ImageButton
+        style="@style/buttons_output_main"
+        android:src="@drawable/copy"
+        android:contentDescription="@string/copy_button" />
+
+    <ImageButton
+        style="@style/buttons_output_main"
+        android:src="@drawable/fill"
+        android:contentDescription="@string/fill_button"
+        android:layout_marginHorizontal="0dp"
+        android:padding="6dp"/>
+
+    <ImageButton
+        style="@style/buttons_output_main"
+        android:src="@drawable/share"
+        android:contentDescription="@string/share_button" />
+</LinearLayout>

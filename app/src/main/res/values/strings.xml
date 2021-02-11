@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Morse</string>
-    <string name="clear">clear button</string>
+    <string name="clear_button">clear button</string>
     <string name="encrypt">暗号化</string>
     <string name="decrypt">復号</string>
     <string name="input_hint">文字列を入力</string>
+    <string name="ex_jp">あ(ア)</string>
+    <string name="ex_en">ENG</string>
+    <string name="play_button">play button</string>
+    <string name="share_button">share button</string>
+    <string name="copy_button">copy button</string>
+    <string name="fill_button">fill button</string>
 </resources>

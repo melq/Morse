@@ -7,16 +7,19 @@
     android:layout_margin="4dp">
 
     <ImageButton
+        android:id="@+id/bt_play"
         style="@style/buttons_output_main"
         android:src="@drawable/play"
         android:contentDescription="@string/play_button" />
 
     <ImageButton
+        android:id="@+id/bt_copy"
         style="@style/buttons_output_main"
         android:src="@drawable/copy"
         android:contentDescription="@string/copy_button" />
 
     <ImageButton
+        android:id="@+id/bt_fill"
         style="@style/buttons_output_main"
         android:src="@drawable/fill"
         android:contentDescription="@string/fill_button"
@@ -24,6 +27,7 @@
         android:padding="6dp"/>
 
     <ImageButton
+        android:id="@+id/bt_share"
         style="@style/buttons_output_main"
         android:src="@drawable/share"
         android:contentDescription="@string/share_button" />

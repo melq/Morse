@@ -7,27 +7,34 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AlphaAnimation
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
+import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
-    /*要素の表示非表示を示す変数*/
-    var isOutputVisible = false
+    /*要素の状態を示す変数*/
+    private var isOutputVisible = true
+    private var translateMode: Boolean = false
 
     /*viewやwidgetのフィールド*/
-    private lateinit var etInput: EditText
-    private lateinit var tvOutput: TextView
     private lateinit var btClear: ImageButton
     private lateinit var layoutOutput: View
+    private lateinit var swMode: SwitchCompat
+    private lateinit var etInput: EditText
+    private lateinit var tvOutput: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        swMode = findViewById(R.id.sw_mode)
+        swMode.isChecked = translateMode
+        swMode.setOnCheckedChangeListener { _, isChecked ->
+            translateMode = isChecked
+        }
+
         etInput = findViewById(R.id.et_input_main)
         tvOutput = findViewById(R.id.tv_output_main)
-
         etInput.addTextChangedListener(object: CustomTextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 tvOutput.text = s
@@ -44,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         btClear.setOnClickListener {
             etInput.setText("")
         }
+
+        changeVisible(false)
     }
 
 
@@ -65,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun fadeAnimation(fadeIn: Boolean, view: View) {
+    private fun fadeAnimation(fadeIn: Boolean, view: View) {
         val fadeAnimation: AlphaAnimation = if (fadeIn) {
             AlphaAnimation(0.0f, 1.0f)
         } else {

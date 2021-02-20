@@ -12,27 +12,40 @@ import android.widget.ImageButton
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    /*要素の表示非表示を示す変数*/
+    var isOutputVisible = false
+
+    /*viewやwidgetのフィールド*/
+    private lateinit var etInput: EditText
+    private lateinit var tvOutput: TextView
+    private lateinit var btClear: ImageButton
+    private lateinit var layoutOutput: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val editText: EditText = findViewById(R.id.et_input_main)
-        val textView: TextView = findViewById(R.id.tv_output_main)
+        etInput = findViewById(R.id.et_input_main)
+        tvOutput = findViewById(R.id.tv_output_main)
 
-        editText.addTextChangedListener(object: CustomTextWatcher {
+        etInput.addTextChangedListener(object: CustomTextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                textView.text = s
+                tvOutput.text = s
+                if (s?.isNotEmpty() == true) {
+                    changeVisible(true)
+                } else {
+                    changeVisible(false)
+                }
             }
         })
 
-        val btClear: ImageButton = findViewById(R.id.clear_text)
-        val layoutOutput: View = findViewById(R.id.layout_output)
-        var visibleOutput: Boolean = true
+        btClear = findViewById(R.id.clear_text)
+        layoutOutput = findViewById(R.id.layout_output)
         btClear.setOnClickListener {
-            visibleOutput = !visibleOutput
-            fadeAnimation(visibleOutput, layoutOutput)
+            etInput.setText("")
         }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option, menu)
@@ -42,6 +55,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return true
+    }
+
+    fun changeVisible(isVisible: Boolean) {
+        if (isOutputVisible != isVisible) {
+            isOutputVisible = isVisible
+            fadeAnimation(isVisible, btClear)
+            fadeAnimation(isVisible, layoutOutput)
+        }
     }
 
     fun fadeAnimation(fadeIn: Boolean, view: View) {
@@ -54,5 +75,4 @@ class MainActivity : AppCompatActivity() {
         fadeAnimation.fillAfter = true
         view.startAnimation(fadeAnimation)
     }
-
 }

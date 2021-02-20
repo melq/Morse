@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/option_vibration"
+        android:icon="@drawable/vibration_on"
+        app:showAsAction="always"
+        android:title="@string/vibration" />
+
+    <item
+        android:id="@+id/option_flash"
+        android:icon="@drawable/flash_on"
+        app:showAsAction="always"
+        android:title="@string/flash" />
+
+    <item
+        android:id="@+id/option_volume"
+        android:icon="@drawable/volume_on"
+        app:showAsAction="always"
+        android:title="@string/volume" />
+
+    <item
+        android:id="@+id/menu_code"
+        android:title="@string/morse_code" />
+
+    <item
+        android:id="@+id/menu_history"
+        android:title="@string/history" />
+</menu>

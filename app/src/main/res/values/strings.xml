@@ -10,4 +10,9 @@
     <string name="share_button">share button</string>
     <string name="copy_button">copy button</string>
     <string name="fill_button">fill button</string>
+    <string name="vibration">vibration</string>
+    <string name="flash">flash</string>
+    <string name="volume">volume</string>
+    <string name="morse_code">モールス符号表</string>
+    <string name="history">変換履歴</string>
 </resources>

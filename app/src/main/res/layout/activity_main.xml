@@ -23,6 +23,7 @@
             <include layout="@layout/input_main" />
 
             <include layout="@layout/output_main" />
+
         </LinearLayout>
 
     </ScrollView>

@@ -6,7 +6,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginEnd="15dp">
+    android:layout_marginEnd="15dp"
+    android:checkedButton="@id/rb_jp">
 
     <RadioButton
         android:id="@+id/rb_jp"
@@ -23,4 +24,5 @@
         android:buttonTint="@color/white"
         android:text="@string/ex_en"
         android:textColor="@color/white" />
+
 </RadioGroup>

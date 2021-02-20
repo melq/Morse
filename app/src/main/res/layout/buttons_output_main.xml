@@ -31,4 +31,5 @@
         style="@style/buttons_output_main"
         android:src="@drawable/share"
         android:contentDescription="@string/share_button" />
+
 </LinearLayout>

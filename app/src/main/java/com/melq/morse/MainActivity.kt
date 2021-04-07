@@ -13,7 +13,10 @@ import androidx.appcompat.widget.SwitchCompat
 class MainActivity : AppCompatActivity() {
     /* 要素の状態を示す変数 */
     private var isOutputVisible = true
-    private var encryptionMode: Boolean = true
+    private var encryptionMode = true
+    private var vibration = true
+    private var flash = true
+    private var volume = true
 
     /* viewやwidgetのフィールド */
     private lateinit var btClear: ImageButton
@@ -49,12 +52,12 @@ class MainActivity : AppCompatActivity() {
                     /* 処理 */
                     changeVisible(false)
                 } else {
-                    /* 処理 */
                         if (encryptionMode) {
                             tvOutput.text = morse.encryption(s.toString())
                         } else {
                             tvOutput.text = morse.decryption(s.toString())
                         }
+                    /* 処理 */
                     changeVisible(true)
                 }
             }
@@ -77,6 +80,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.option_vibration ->
+                vibration = !vibration
+            R.id.option_flash ->
+                flash = !flash
+            R.id.option_volume ->
+                volume = !volume
+        }
         /* 処理 */
         return true
     }

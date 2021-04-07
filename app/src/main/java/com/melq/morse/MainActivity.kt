@@ -9,28 +9,35 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
-    /*要素の状態を示す変数*/
+    /* 要素の状態を示す変数 */
     private var isOutputVisible = true
-    private var translateMode: Boolean = false
+    private var encryptionMode: Boolean = true
 
-    /*viewやwidgetのフィールド*/
+    /* viewやwidgetのフィールド */
     private lateinit var btClear: ImageButton
     private lateinit var layoutOutput: View
     private lateinit var swMode: SwitchCompat
     private lateinit var etInput: EditText
     private lateinit var tvOutput: TextView
 
+    /* 変換クラスのインスタンスの定義 */
+    private val morse = Morse()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         swMode = findViewById(R.id.sw_mode)
-        swMode.isChecked = translateMode
+        swMode.isChecked = encryptionMode
         swMode.setOnCheckedChangeListener { _, isChecked ->
-            translateMode = isChecked
+            encryptionMode = isChecked
+            if (encryptionMode)
+                tvOutput.text = morse.encryption(etInput.text.toString())
+            else
+                tvOutput.text = morse.decryption(etInput.text.toString())
+            /* 処理 */
         }
 
         etInput = findViewById(R.id.et_input_main)
@@ -38,10 +45,17 @@ class MainActivity : AppCompatActivity() {
         etInput.addTextChangedListener(object: CustomTextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 tvOutput.text = s
-                if (s?.isNotEmpty() == true) {
-                    changeVisible(true)
-                } else {
+                if (s?.isEmpty() == true) {
+                    /* 処理 */
                     changeVisible(false)
+                } else {
+                    /* 処理 */
+                        if (encryptionMode) {
+                            tvOutput.text = morse.encryption(s.toString())
+                        } else {
+                            tvOutput.text = morse.decryption(s.toString())
+                        }
+                    changeVisible(true)
                 }
             }
         })
@@ -63,9 +77,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        /* 処理 */
         return true
     }
 
+    /* 出力エリアの表示切替 */
     fun changeVisible(isVisible: Boolean) {
         if (isOutputVisible != isVisible) {
             isOutputVisible = isVisible

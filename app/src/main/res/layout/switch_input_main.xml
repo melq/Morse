@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
         android:textColor="@color/black"
-        android:text="@string/encrypt" />
+        android:text="@string/decrypt" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/sw_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
+        android:checked="true"
         android:paddingBottom="8dp" />
 
     <TextView
@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
         android:textColor="@color/black"
-        android:text="@string/decrypt" />
+        android:text="@string/encrypt" />
 
 </LinearLayout>

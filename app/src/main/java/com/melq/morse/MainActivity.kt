@@ -76,6 +76,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option, menu)
 
+        menu?.findItem(R.id.option_vibration)?.setIcon(
+                if (vibration) R.drawable.vibration_on
+                else R.drawable.vibration_off)
+        menu?.findItem(R.id.option_flash)?.setIcon(
+                if (flash) R.drawable.flash_on
+                else R.drawable.flash_off)
+        menu?.findItem(R.id.option_volume)?.setIcon(
+                if (volume) R.drawable.volume_on
+                else R.drawable.volume_off)
+
         return true
     }
 
@@ -88,6 +98,7 @@ class MainActivity : AppCompatActivity() {
             R.id.option_volume ->
                 volume = !volume
         }
+        invalidateOptionsMenu()
         /* 処理 */
         return true
     }

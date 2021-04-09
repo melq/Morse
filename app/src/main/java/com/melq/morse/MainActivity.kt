@@ -97,7 +97,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
-//        val editor = pref.edit()
         when (item.itemId) {
             R.id.option_vibration -> {
                 vibration = !vibration
@@ -112,7 +111,6 @@ class MainActivity : AppCompatActivity() {
                 pref.edit { putBoolean("volume", volume) }
             }
         }
-//        editor.apply()
         invalidateOptionsMenu() // 再描画
         /* 処理 */
 

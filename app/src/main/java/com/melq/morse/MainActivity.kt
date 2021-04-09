@@ -10,6 +10,7 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.edit
 
 class MainActivity : AppCompatActivity() {
     /* 要素の状態を示す変数 */
@@ -36,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         /* 設定の読み込み */
         val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
         vibration = pref.getBoolean("vibration", true)
-        flash = pref.getBoolean("flash", false)
-        volume = pref.getBoolean("volume", false)
+        flash =     pref.getBoolean("flash", false)
+        volume =    pref.getBoolean("volume", false)
 
         swMode = findViewById(R.id.sw_mode)
         swMode.isChecked = encryptionMode
@@ -72,9 +73,7 @@ class MainActivity : AppCompatActivity() {
 
         btClear = findViewById(R.id.clear_text)
         layoutOutput = findViewById(R.id.layout_output)
-        btClear.setOnClickListener {
-            etInput.setText("")
-        }
+        btClear.setOnClickListener { etInput.setText("") }
 
         changeVisible(false)
     }
@@ -98,23 +97,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
-        val editor = pref.edit()
+//        val editor = pref.edit()
         when (item.itemId) {
             R.id.option_vibration -> {
                 vibration = !vibration
-                editor.putBoolean("vibration", vibration)
+                pref.edit { putBoolean("vibration", vibration) }
             }
             R.id.option_flash -> {
                 flash = !flash
-                editor.putBoolean("flash", flash)
+                pref.edit { putBoolean("flash", flash) }
             }
             R.id.option_volume -> {
                 volume = !volume
-                editor.putBoolean("volume", volume)
+                pref.edit { putBoolean("volume", volume) }
             }
         }
-        editor.apply()
-        invalidateOptionsMenu()
+//        editor.apply()
+        invalidateOptionsMenu() // 再描画
         /* 処理 */
 
         return true

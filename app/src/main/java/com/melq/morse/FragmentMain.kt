@@ -46,6 +46,8 @@ class FragmentMain: Fragment() {
                 }
             }
         })
+
+        binding.btClear.setOnClickListener { binding.etInputMain.setText("") }
     }
 
     fun doTranslate(encryptMode: Boolean, text: String) {

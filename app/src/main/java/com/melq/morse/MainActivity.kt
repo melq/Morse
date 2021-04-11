@@ -8,22 +8,13 @@ import android.view.MenuItem
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.*
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.edit
 
 class MainActivity : AppCompatActivity() {
     /* 要素の状態を示す変数 */
-    private var isOutputVisible = true
     private var vibration = true
     private var flash = false
     private var volume = false
-
-    /* viewやwidgetのフィールド */
-    private lateinit var btClear: ImageButton
-    private lateinit var layoutOutput: View
-
-    /* 変換クラスのインスタンスの定義 */
-    private val morse = Morse()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,25 +70,5 @@ class MainActivity : AppCompatActivity() {
         /* 処理 */
 
         return true
-    }
-
-    /* 出力エリアの表示切替 */
-    fun changeVisible(isVisible: Boolean) {
-        if (isOutputVisible != isVisible) {
-            isOutputVisible = isVisible
-            fadeAnimation(isVisible, btClear)
-            fadeAnimation(isVisible, layoutOutput)
-        }
-    }
-
-    private fun fadeAnimation(fadeIn: Boolean, view: View) {
-        val fadeAnimation: AlphaAnimation = if (fadeIn) {
-            AlphaAnimation(0.0f, 1.0f)
-        } else {
-            AlphaAnimation(1.0f, 0.0f)
-        }
-        fadeAnimation.duration = 400
-        fadeAnimation.fillAfter = true
-        view.startAnimation(fadeAnimation)
     }
 }

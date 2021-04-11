@@ -15,6 +15,7 @@ class FragmentMain: Fragment() {
 
     private val viewModel = ViewModelMain()
 
+    /* 変換クラスのインスタンスの定義 */
     private val morse = Morse()
 
     override fun onCreateView(

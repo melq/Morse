@@ -31,6 +31,11 @@ class FragmentMain: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.swMode.setOnCheckedChangeListener { _, isChecked  ->
+            viewModel.setIsEncryptMode(isChecked)
+            doTranslate(binding.swMode.isChecked, binding.etInputMain.text.toString())
+        }
+
         binding.etInputMain.addTextChangedListener(object: CustomTextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s?.isEmpty() == true) {

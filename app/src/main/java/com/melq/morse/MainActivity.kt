@@ -38,48 +38,48 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.linearLayout, FragmentMain())
                 .commit()
 
-        /* 設定の読み込み */
-        val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
-        vibration = pref.getBoolean("vibration", true)
-        flash =     pref.getBoolean("flash", false)
-        volume =    pref.getBoolean("volume", false)
-
-        swMode = findViewById(R.id.sw_mode)
-        swMode.isChecked = encryptionMode
-        swMode.setOnCheckedChangeListener { _, isChecked ->
-            encryptionMode = isChecked
-            if (encryptionMode)
-                tvOutput.text = morse.encryption(etInput.text.toString())
-            else
-                tvOutput.text = morse.decryption(etInput.text.toString())
-            /* 処理 */
-        }
-
-        etInput = findViewById(R.id.et_input_main)
-        tvOutput = findViewById(R.id.tv_output_main)
-        etInput.addTextChangedListener(object: CustomTextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                tvOutput.text = s
-                if (s?.isEmpty() == true) {
-                    /* 処理 */
-                    changeVisible(false)
-                } else {
-                        if (encryptionMode) {
-                            tvOutput.text = morse.encryption(s.toString())
-                        } else {
-                            tvOutput.text = morse.decryption(s.toString())
-                        }
-                    /* 処理 */
-                    changeVisible(true)
-                }
-            }
-        })
-
-        btClear = findViewById(R.id.clear_text)
-        layoutOutput = findViewById(R.id.layout_output)
-        btClear.setOnClickListener { etInput.setText("") }
-
-        changeVisible(false)
+//        /* 設定の読み込み */
+//        val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
+//        vibration = pref.getBoolean("vibration", true)
+//        flash =     pref.getBoolean("flash", false)
+//        volume =    pref.getBoolean("volume", false)
+//
+//        swMode = findViewById(R.id.sw_mode)
+//        swMode.isChecked = encryptionMode
+//        swMode.setOnCheckedChangeListener { _, isChecked ->
+//            encryptionMode = isChecked
+//            if (encryptionMode)
+//                tvOutput.text = morse.encryption(etInput.text.toString())
+//            else
+//                tvOutput.text = morse.decryption(etInput.text.toString())
+//            /* 処理 */
+//        }
+//
+//        etInput = findViewById(R.id.et_input_main)
+//        tvOutput = findViewById(R.id.tv_output_main)
+//        etInput.addTextChangedListener(object: CustomTextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//                tvOutput.text = s
+//                if (s?.isEmpty() == true) {
+//                    /* 処理 */
+//                    changeVisible(false)
+//                } else {
+//                        if (encryptionMode) {
+//                            tvOutput.text = morse.encryption(s.toString())
+//                        } else {
+//                            tvOutput.text = morse.decryption(s.toString())
+//                        }
+//                    /* 処理 */
+//                    changeVisible(true)
+//                }
+//            }
+//        })
+//
+//        btClear = findViewById(R.id.bt_clear)
+//        layoutOutput = findViewById(R.id.layout_output)
+//        btClear.setOnClickListener { etInput.setText("") }
+//
+//        changeVisible(false)
     }
 
 

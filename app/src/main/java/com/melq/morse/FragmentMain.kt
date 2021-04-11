@@ -2,11 +2,11 @@ package com.melq.morse
 
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.melq.morse.databinding.FragmentMainBinding
 
@@ -17,6 +17,9 @@ class FragmentMain: Fragment() {
 
     /* 変換クラスのインスタンスの定義 */
     private val morse = Morse()
+
+    /* 各要素の状態を保持するフィールド */
+    private var isOutputVisible = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -39,16 +42,16 @@ class FragmentMain: Fragment() {
 
         binding.etInputMain.addTextChangedListener(object: CustomTextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (s?.isEmpty() == true) {
-                    changeVisible(false)
-                } else {
-                    doTranslate(binding.swMode.isChecked, s.toString())
-                    changeVisible(true)
-                }
+                doTranslate(binding.swMode.isChecked, s.toString())
+
+                if (s?.isEmpty() == true) changeVisible(false)
+                else changeVisible(true)
             }
         })
 
         binding.btClear.setOnClickListener { binding.etInputMain.setText("") }
+
+        changeVisible(!binding.etInputMain.text.isNullOrEmpty())
     }
 
     fun doTranslate(encryptMode: Boolean, text: String) {
@@ -60,7 +63,8 @@ class FragmentMain: Fragment() {
 
     /* 出力エリアの表示切替 */
     fun changeVisible(isVisible: Boolean) {
-        if (binding.btClear.isVisible != isVisible) {
+        if ((binding.btClear.alpha == 1.0f) != isVisible) {
+            isOutputVisible = isVisible
             fadeAnimation(isVisible, binding.btClear)
             fadeAnimation(isVisible, binding.layoutOutput)
         }

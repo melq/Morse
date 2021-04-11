@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corner_4"
+        android:backgroundTint="@color/white"
+        android:layout_margin="6dp"
+        android:elevation="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/et_input_main"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/black"
+                android:text="@string/decrypt" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sw_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/black"
+                android:text="@string/encrypt" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_input_main"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:autofillHints="@string/input_hint"
+            android:hint="@string/input_hint"
+            android:inputType="textMultiLine"
+            android:textSize="20sp"/>
+
+
+        <ImageButton
+            android:id="@+id/clear_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="4dp"
+            android:background="@color/white"
+            android:src="@drawable/clear"
+            android:contentDescription="@string/clear_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_output"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corner_4"
+        android:layout_margin="6dp"
+        android:elevation="6dp"
+        android:layout_marginTop="4dp"
+        android:gravity="end">
+
+        <include layout="@layout/rg_output_main" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="6dp">
+
+            <TextView
+                android:id="@+id/tv_output_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="4dp">
+
+            <ImageButton
+                android:id="@+id/bt_play"
+                style="@style/buttons_output_main"
+                android:src="@drawable/play"
+                android:contentDescription="@string/play_button" />
+
+            <ImageButton
+                android:id="@+id/bt_copy"
+                style="@style/buttons_output_main"
+                android:src="@drawable/copy"
+                android:contentDescription="@string/copy_button" />
+
+            <ImageButton
+                android:id="@+id/bt_fill"
+                style="@style/buttons_output_main"
+                android:src="@drawable/fill"
+                android:contentDescription="@string/fill_button"
+                android:layout_marginHorizontal="0dp"
+                android:padding="6dp"/>
+
+            <ImageButton
+                android:id="@+id/bt_share"
+                style="@style/buttons_output_main"
+                android:src="@drawable/share"
+                android:contentDescription="@string/share_button" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

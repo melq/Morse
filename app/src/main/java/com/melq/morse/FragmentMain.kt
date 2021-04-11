@@ -34,19 +34,20 @@ class FragmentMain: Fragment() {
         binding.etInputMain.addTextChangedListener(object: CustomTextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s?.isEmpty() == true) {
-                    /* 処理 */
                     changeVisible(false)
                 } else {
-                    if (binding.swMode.isChecked) {
-                        viewModel.setOutPutText(morse.encryption(s.toString()))
-                    } else {
-                        viewModel.setOutPutText(morse.decryption(s.toString()))
-                    }
-                    /* 処理 */
+                    doTranslate(binding.swMode.isChecked, s.toString())
                     changeVisible(true)
                 }
             }
         })
+    }
+
+    fun doTranslate(encryptMode: Boolean, text: String) {
+        viewModel.setOutPutText(
+            if (encryptMode) morse.encryption(text)
+            else morse.decryption(text)
+        )
     }
 
     /* 出力エリアの表示切替 */

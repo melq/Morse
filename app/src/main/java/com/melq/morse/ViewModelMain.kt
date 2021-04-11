@@ -17,6 +17,10 @@ class ViewModelMain {
         }
     val outputText: LiveData<String> get() = _outputText
 
+    fun setIsEncryptMode(isEncryptMode: Boolean) {
+        _isEncryptMode.value = isEncryptMode
+    }
+
     fun setOutPutText(text: String) {
         _outputText.value = text
     }

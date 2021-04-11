@@ -19,7 +19,7 @@ class FragmentMain: Fragment() {
     private val morse = Morse()
 
     /* 各要素の状態を保持するフィールド */
-    private var isOutputVisible = false
+    private var isOutputVisible = true
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -63,7 +63,7 @@ class FragmentMain: Fragment() {
 
     /* 出力エリアの表示切替 */
     fun changeVisible(isVisible: Boolean) {
-        if ((binding.btClear.alpha == 1.0f) != isVisible) {
+        if (isOutputVisible != isVisible) {
             isOutputVisible = isVisible
             fadeAnimation(isVisible, binding.btClear)
             fadeAnimation(isVisible, binding.layoutOutput)

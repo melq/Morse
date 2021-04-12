@@ -1,6 +1,8 @@
 package com.melq.morse
 
 import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -53,8 +55,21 @@ class FragmentMain: Fragment() {
         binding.btClear.setOnClickListener { binding.etInputMain.setText("") }
         binding.btShare.setOnClickListener {
             Log.v("share", "share button clicked")
-//            val dlg = AlertDialog.Builder(context)
-//            dlg.setTitle(R.string.share_title)
+            val dlg = AlertDialog.Builder(context)
+            dlg.setTitle(R.string.share_title)
+                    .setItems(R.array.share_styles,
+                    DialogInterface.OnClickListener { _, which ->
+                        val intent = Intent(Intent.ACTION_SEND)
+                        intent.type = "text/plain"
+                        intent.putExtra(Intent.EXTRA_TEXT,
+                                when (which) {
+                                    0 -> binding.tvOutputMain.text
+                                    1 -> "${binding.etInputMain.text} を ${binding.tvOutputMain.text} に変換しました！"
+                                    else -> ""
+                                })
+                        startActivity(intent)
+                    })
+            dlg.show()
         }
 
         changeVisible(!binding.etInputMain.text.isNullOrEmpty())

@@ -1,5 +1,6 @@
 package com.melq.morse
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -50,6 +51,11 @@ class FragmentMain: Fragment() {
         })
 
         binding.btClear.setOnClickListener { binding.etInputMain.setText("") }
+        binding.btShare.setOnClickListener {
+            Log.v("share", "share button clicked")
+//            val dlg = AlertDialog.Builder(context)
+//            dlg.setTitle(R.string.share_title)
+        }
 
         changeVisible(!binding.etInputMain.text.isNullOrEmpty())
     }

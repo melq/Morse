@@ -15,4 +15,7 @@
     <string name="volume">volume</string>
     <string name="morse_code">モールス符号表</string>
     <string name="history">変換履歴</string>
+    <string name="share_title">変換結果の共有</string>
+    <string name="only_result">結果のみ</string>
+    <string name="before_and_after">[元の文] を [結果] に変換しました！</string>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="share_styles">
+        <item>@string/only_result</item>
+        <item>@string/before_and_after</item>
+    </string-array>
+</resources>

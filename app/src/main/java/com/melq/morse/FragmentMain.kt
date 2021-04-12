@@ -5,7 +5,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +53,6 @@ class FragmentMain: Fragment() {
 
         binding.btClear.setOnClickListener { binding.etInputMain.setText("") }
         binding.btShare.setOnClickListener {
-            Log.v("share", "share button clicked")
             val dlg = AlertDialog.Builder(context)
             dlg.setTitle(R.string.share_title)
                     .setItems(R.array.share_styles,

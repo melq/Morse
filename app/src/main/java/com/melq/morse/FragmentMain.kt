@@ -56,6 +56,7 @@ class FragmentMain: Fragment() {
         binding.btFillAbove.setOnClickListener {
             Log.v("fill: ", binding.tvOutputMain.text.toString())
             binding.etInputMain.setText(viewModel.outputText.value)
+            binding.swMode.isChecked = !binding.swMode.isChecked
         }
         binding.btShare.setOnClickListener {
             val dlg = AlertDialog.Builder(context)

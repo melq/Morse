@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +53,10 @@ class FragmentMain: Fragment() {
         })
 
         binding.btClear.setOnClickListener { binding.etInputMain.setText("") }
+        binding.btFillAbove.setOnClickListener {
+            Log.v("fill: ", binding.tvOutputMain.text.toString())
+            binding.etInputMain.setText(viewModel.outputText.value)
+        }
         binding.btShare.setOnClickListener {
             val dlg = AlertDialog.Builder(context)
             dlg.setTitle(R.string.share_title)

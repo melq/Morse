@@ -147,7 +147,7 @@
                     android:contentDescription="@string/copy_button" />
 
                 <ImageButton
-                    android:id="@+id/bt_fill"
+                    android:id="@+id/bt_fill_above"
                     style="@style/buttons_output_main"
                     android:src="@drawable/fill"
                     android:contentDescription="@string/fill_button"

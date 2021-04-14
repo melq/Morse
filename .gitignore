@@ -13,13 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-.idea
-gradle.properties
-gradle
-gradlew
-gradlew.bat
-/build.gradle
-/app/src/androidTest
-/app/src/test
-/app/proguard-rules.pro

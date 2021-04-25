@@ -15,13 +15,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" >
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
 
     </ScrollView>
 

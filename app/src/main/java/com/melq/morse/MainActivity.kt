@@ -17,10 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.linearLayout, MainFragment())
-                .commit()
-
 //        /* 設定の読み込み */
 //        val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
 //        vibration = pref.getBoolean("vibration", true)

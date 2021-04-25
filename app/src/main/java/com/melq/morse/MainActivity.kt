@@ -17,11 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        /* 設定の読み込み */
-//        val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
-//        vibration = pref.getBoolean("vibration", true)
-//        flash =     pref.getBoolean("flash", false)
-//        volume =    pref.getBoolean("volume", false)
+        /* 設定の読み込み */
+        val pref = getSharedPreferences("preference_root", Context.MODE_PRIVATE)
+        vibration = pref.getBoolean("vibration", true)
+        flash =     pref.getBoolean("flash", false)
+        volume =    pref.getBoolean("volume", false)
 //
 //        changeVisible(false)
     }

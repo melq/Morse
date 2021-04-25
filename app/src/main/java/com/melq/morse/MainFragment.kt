@@ -13,7 +13,7 @@ import android.view.animation.AlphaAnimation
 import androidx.fragment.app.Fragment
 import com.melq.morse.databinding.FragmentMainBinding
 
-class FragmentMain: Fragment() {
+class MainFragment: Fragment() {
     private lateinit var binding: FragmentMainBinding
 
     private val viewModel = ViewModelMain()

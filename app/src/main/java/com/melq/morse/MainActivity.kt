@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.animation.AlphaAnimation
-import android.widget.*
 import androidx.core.content.edit
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-                .replace(R.id.linearLayout, FragmentMain())
+                .replace(R.id.linearLayout, MainFragment())
                 .commit()
 
 //        /* 設定の読み込み */

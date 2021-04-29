@@ -19,7 +19,7 @@ class MainFragment: Fragment() {
     private val viewModel = ViewModelMain()
 
     /* 変換クラスのインスタンスの定義 */
-    private val morse = Morse()
+    private val morse = Morse(0)
 
     /* 各要素の状態を保持するフィールド */
     private var isOutputVisible = true
@@ -57,6 +57,16 @@ class MainFragment: Fragment() {
             binding.etInputMain.setText(viewModel.outputText.value)
             binding.swMode.isChecked = !binding.swMode.isChecked
         }
+
+        binding.rgLang.setOnCheckedChangeListener { _, checkedId ->
+            morse.lang = when (checkedId) {
+                R.id.rb_jp -> 0
+                R.id.rb_en -> 1
+                else -> 0
+            }
+            doTranslate(binding.swMode.isChecked, binding.etInputMain.text.toString())
+        }
+
         binding.btShare.setOnClickListener {
             val dlg = AlertDialog.Builder(context)
             dlg.setTitle(R.string.share_title)

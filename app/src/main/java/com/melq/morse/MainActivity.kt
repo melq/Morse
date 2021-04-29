@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         vibration = pref.getBoolean("vibration", true)
         flash =     pref.getBoolean("flash", false)
         volume =    pref.getBoolean("volume", false)
-//
+
 //        changeVisible(false)
     }
 

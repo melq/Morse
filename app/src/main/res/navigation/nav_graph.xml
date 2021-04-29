@@ -32,11 +32,13 @@
     <fragment
         android:id="@+id/codeListFragment"
         android:name="com.melq.morse.page.codelist.CodeListFragment"
-        android:label="CodeListFragment" />
+        android:label="CodeListFragment"
+        tools:layout="@layout/fragment_code_list"/>
 
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.melq.morse.page.history.HistoryFragment"
-        android:label="HistoryFragment" />
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history"/>
 
 </navigation>
